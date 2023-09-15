@@ -12,7 +12,7 @@ html, body, #__nuxt {
 }
 
 .block-image, .block-image-thumb {
-  max-height: 300px;
+  max-height: 500px;
 }
 
 .block_classes.bold {
