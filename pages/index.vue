@@ -4,7 +4,7 @@
       <img class="min-h-[166px]" src="~/assets/images/logo-preta.png" alt="Josceline Dadá">
    </div>
    <div v-if="!$route.params.slug" class="py-5 max-w-5xl m-auto">
-      <div class="mb-4  max-w-[60%] m-auto relative flex flex-col justify-center items-center text-black ">
+      <div class="mb-4  max-w-[75%] m-auto relative flex flex-col justify-center items-center text-black ">
         <div class="flex flex-col items-center mb-8">
           <h1 class="text-5xl font-semibold mb-4">
           {{ posts[0].title }}
