@@ -63,6 +63,16 @@ export const parseHTML = (posts) => {
 
   posts?.forEach(postPage => {
     const { blocks, page_id, post } = postPage
+
+    const created_at = new Date(post.created_time).toLocaleDateString('pt-PT', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      // hour: 'numeric',
+      // minute: 'numeric'
+    })
+
+    console.log(created_at)
     if (blocks.length > 0) {
       const parsedBlockHTMl = blocks.map(block => returnHtmlForBlockType(block))
       const parsedBlockHTMlString = parsedBlockHTMl.join('')
@@ -70,6 +80,7 @@ export const parseHTML = (posts) => {
       parsedPosts.push({
         page_id,
         uri: post.properties["URI"].rich_text[0]?.text.content,
+        created_at,
         author: post.properties["Author"]?.rich_text[0]?.text.content || 'Josceline Dadá',
         thumbnail: post.properties['Thumbnail'].files[0]?.file.url || '',
         title: post.properties["Name"].title[0]?.text.content,

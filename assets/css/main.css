@@ -12,7 +12,9 @@ html, body, #__nuxt {
 }
 
 .block-image, .block-image-thumb {
-  max-height: 500px;
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .block_classes.bold {
