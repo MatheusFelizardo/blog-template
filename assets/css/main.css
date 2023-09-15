@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html, body, #__nuxt {
+  height: 100%;
+}
+
+.block_classes {
+  min-height: 20px;
+}
+
+.block-image, .block-image-thumb {
+  max-height: 300px;
+}
+
+.block_classes.bold {
+  font-weight: 700;
+}
+
+.block_classes.italic {
+  font-style: italic;
+}
+
+.block_classes.strikethrough {
+  text-decoration: line-through;
+}
+
+.block_classes.underline {
+  text-decoration: underline;
+}
+
+.block_classes.gray {
+  color: rgba(120, 119, 116, 1);
+}
+
+.block_classes.brown {
+  color: rgba(159, 107, 83, 1);
+}
+
+.block_classes.red {
+  color: rgba(212, 76, 71, 1);
+}
+
+.block_classes.orange {
+  color: rgba(217, 115, 13, 1);
+}
+
+.block_classes.yellow {
+  color: rgba(203, 145, 47, 1);
+}
+
+.block_classes.green {
+  color: rgba(68, 131, 97, 1);
+}
+
+
+.block_classes.blue {
+  color: rgba(51, 126, 169, 1);
+}
+
+.block_classes.purple {
+  color: rgba(144, 101, 176, 1);
+}
+
+.block_classes.pink {
+  color: rgba(193, 76, 138, 1);
+}
