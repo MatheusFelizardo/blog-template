@@ -1,21 +1,22 @@
 <template>
 
-   <div class="my-12 flex justify-center">
+   <!-- <div class="my-12 flex justify-center items-center flex-col">
       <img class="min-h-[166px]" src="~/assets/images/logo-preta.png" alt="Josceline Dadá">
-   </div>
-   <div v-if="!$route.params.slug" class="py-5 max-w-5xl m-auto">
-      <div class="mb-4  max-w-[75%] m-auto relative flex flex-col justify-center items-center text-black ">
-        <div class="flex flex-col items-center mb-8">
-          <h1 class="text-5xl font-semibold mb-4">
+      
+   </div> -->
+   <div v-if="!$route.params.slug" class="pt-40 py-5 max-w-5xl m-auto">
+      <div class="mb-4  max-w-[65%] m-auto relative flex flex-col justify-center  text-black ">
+        <div class="flex flex-col mb-1">
+          <h1 class="text-4xl font-light font-['Newsreader'] mb-4">
           {{ posts[0].title }}
           </h1>
 
-          <div class="text-md mb-6 font-sans text-black">
-          by {{ posts[0].author }}
+          <div class="text-sm text-black font-['Newsreader']">
+           {{ posts[0].created_at }}
           </div>
         </div>
 
-         <div class="text-md font-sans" v-html="posts[0].html" />
+         <div class="text-sm font-sans" v-html="posts[0].html" />
       </div>
  
       <hr class="mt-16" />
@@ -24,20 +25,28 @@
         Check all posts
       </div> -->
       
-     <div id="cards-container" class="grid grid-cols-1 gap-8 max-w-[950px] m-auto mt-16">
+     <!-- <div id="cards-container" class="grid grid-cols-1 gap-8 max-w-[950px] m-auto mt-16"> -->
+     <div id="cards-container" class="grid grid-cols-3 gap-8 max-w-[950px] m-auto mt-16">
        <template v-for="(post, index) in posts" :key="post.title">
-         <div 
+        <div class="relative group">
+          <div class="">
+            <img class="w-full h-[300px] object-cover" :src="post.thumbnail" alt="">
+          </div>
+
+          <NuxtLink :to="`/posts/${post.uri}`" class="opacity-0 transition-opacity description w-full h-full absolute justify-center items-center flex top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-black bg-opacity-50 group-hover:opacity-100">
+            <span class="text-md font-extralight w-[65%] text-center text-white font-['Newsreader']">{{ post.title }}</span>
+          </NuxtLink>
+        </div>
+         <!-- <div 
           v-if="index !== 0" 
           id="card" 
           class="flex gap-16 font-sans relative border-2 border-gray-100 text-black rounded-sm">
-            <!-- <NuxtLink class="absolute w-full h-full left-0 top-0 font-sans" :to="`/posts/${post.uri}`"></NuxtLink> -->
             <div class="basis-6/12 ">
                 <img class="w-full h-96 object-cover" :src="post.thumbnail" alt="">
             </div>
 
             <div class="p-8 basis-6/12 relative">
               <div class="flex items-center gap-4 mb-8">
-                <!-- profile picture with tailwind -->
                 <div>
                   <img v-if="post.author_image" class="w-8 h-8 rounded-full" :src="post.author_image" alt="">
                   <div v-else class="w-8 h-8 rounded-full bg-gray-300">
@@ -64,12 +73,8 @@
               </NuxtLink>
 
             </div>
- 
-          <!-- <p class="text-xs">
-            {{ post.description }}
-          </p> -->
-           <!-- <div class="text-xl" v-html="post.html" /> -->
-         </div>
+         </div> -->
+
        </template>
 
 

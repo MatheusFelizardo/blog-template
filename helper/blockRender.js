@@ -64,7 +64,7 @@ export const parseHTML = (posts) => {
   posts?.forEach(postPage => {
     const { blocks, page_id, post } = postPage
 
-    const created_at = new Date(post.created_time).toLocaleDateString('pt-PT', {
+    const created_at = new Date(post.created_time).toLocaleDateString('en-Us', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',

@@ -1,27 +1,25 @@
 <template>
  
   <template v-if="!$route.params.slug">
-    <div class="my-2 text-md text-center">
-      Todos os posts
-    </div>
       
-    <div id="cards-container" class="flex flex-col gap-[20px]">
+    <div id="cards-container" class="flex flex-col gap-[20px] pt-40 max-w-5xl m-auto">
       <template v-for="(post, index) in posts" :key="post.title">
-        <div :id="post.title" class="post w-[75%] m-auto p-5 text-black relative">
+        <div :id="post.title" class="post w-[65%] m-auto  text-black relative">
         <NuxtLink class="absolute w-full h-full left-0 top-0 font-sans" :to="`/posts/${post.uri}`"></NuxtLink>
-
-          <div class="flex flex-col items-center mb-8 justify-center">
-            <h1 class="text-5xl font-semibold mb-4">
+          <div class="flex flex-col mb-1">
+            <h1 class="text-4xl font-light font-['Newsreader'] mb-4">
             {{ post.title }}
             </h1>
 
-            <div class="text-sm mb-6 font-sans font-extralight text-slate-100">
-            by {{ post.author }}
+            <div class="text-sm text-black font-['Newsreader']">
+            {{ post.created_at }}
             </div>
           </div>
 
-          <div class="text-md font-sans" v-html="post.html" />
+          <div class="text-sm font-sans" v-html="post.html" />
+
           <hr class="mt-12" />
+
         </div>
       </template>
     </div>

@@ -1,19 +1,30 @@
 <template>
-  <NuxtLink class="p-2 bg-black text-white mb-4" :to="`/posts`">BACK</NuxtLink>
 
-  <div :id="post.title" class="post w-[75%] m-auto p-5 text-black">
-      <div class="flex flex-col items-center mb-8">
-        <h1 class="text-5xl font-semibold mb-4">
-        {{ post.title }}
-        </h1>
+  <div class="max-w-5xl m-auto pt-40">
+    <div :id="post.title" class="post w-[65%] m-auto  text-black">
+      <div class="flex flex-col mb-8">
+        <h1 class="text-4xl font-light font-['Newsreader'] mb-4">
+          {{ post.title }}
+          </h1>
 
-        <div class="text-sm mb-6 font-sans font-extralight text-slate-100">
-        by {{ post.author }}
+          <div class="text-sm text-black font-['Newsreader']">
+          {{ post.created_at }}
+          </div>
         </div>
-      </div>
 
-      <div class="text-md font-sans" v-html="post.html" />
+        <div class="text-sm font-sans" v-html="post.html" />
+
+        <div class="flex gap-2 items-center justify-around text-xs font-bold italic mt-20 font-['Newsreader']">
+          <NuxtLink v-if="prevPost" class="p-2 text-black mb-4" :to="`/posts/${prevPost.uri}`">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="currentColor" d="M27.3 34.7L17.6 25l9.7-9.7l1.4 1.4l-8.3 8.3l8.3 8.3z"/></svg>
+          </NuxtLink>
+          <NuxtLink v-if="nextPost" class="p-2 text-black mb-4" :to="`/posts/${nextPost.uri}`">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="currentColor" d="m22.7 34.7l-1.4-1.4l8.3-8.3l-8.3-8.3l1.4-1.4l9.7 9.7z"/></svg>
+          </NuxtLink>
+        </div>
+    </div>
   </div>
+ 
 
 </template>
 
@@ -27,4 +38,7 @@
   })
 
   const post = props.posts.find(post => post.uri === route.params.slug)
+
+  const nextPost = props.posts[props.posts.indexOf(post) + 1]
+  const prevPost = props.posts[props.posts.indexOf(post) - 1]
 </script>
