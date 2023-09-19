@@ -90,6 +90,14 @@
  
    const { $postStore } = useNuxtApp()
    const { posts } = storeToRefs($postStore)
+
+   // SEO
+   useSeoMeta({
+    title: 'HOME - MyBlog',
+    ogTitle: 'HOME - MyBlog',
+    description: 'This is my blog, let me tell you all about it.',
+    ogDescription: 'This is my blog, let me tell you all about it.',
+  })
  
  </script>
  

@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
+    title: 'Welcome to my blog',
     head:{
       meta: [
         { hid: 'google-font', rel: 'preconnect', href: 'https://fonts.gstatic.com' },

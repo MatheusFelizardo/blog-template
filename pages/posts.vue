@@ -34,4 +34,11 @@
   const { $postStore } = useNuxtApp()
   const { posts } = storeToRefs($postStore)
 
+  useSeoMeta({
+    title: 'STORIES - MyBlog',
+    ogTitle: 'STORIES - MyBlog',
+    description: 'This is my blog, let me tell you all about it.',
+    ogDescription: 'This is my blog, let me tell you all about it.',
+  })
+
 </script>

@@ -47,4 +47,11 @@
 
   const nextPost = props.posts[props.posts.indexOf(post) + 1]
   const prevPost = props.posts[props.posts.indexOf(post) - 1]
+
+  useSeoMeta({
+    title: `${post.title} - ${post.created_at} - MyBlog`,
+    ogTitle: `${post.title} - ${post.created_at} - MyBlog`,
+    description: `${post.description}`,
+    ogDescription: `${post.description}`,
+  })
 </script>

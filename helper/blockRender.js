@@ -96,7 +96,7 @@ export const parseHTML = (posts) => {
         author: post.properties["Author"]?.rich_text[0]?.text.content || 'Josceline Dadá',
         thumbnail: post.properties['Thumbnail'].files[0]?.file.url || '/images/default-thumbnail.png',
         title: post.properties["Name"].title[0]?.text.content,
-        description: post.properties["Description"].rich_text[0]?.text.content,
+        description: post.properties["Description"].rich_text[0]?.text.content || '',
         html: parsedBlockHTMlString
       })
     }

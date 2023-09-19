@@ -11,4 +11,11 @@
   import { storeToRefs } from 'pinia';
   const { $postStore } = useNuxtApp()
   const { aboutMe } = storeToRefs($postStore)
+
+  useSeoMeta({
+    title: 'ABOUT ME - MyBlog',
+    ogTitle: 'ABOUT ME - MyBlog',
+    description: 'This is my blog, let me tell you all about it.',
+    ogDescription: 'This is my blog, let me tell you all about it.',
+  })
 </script>
