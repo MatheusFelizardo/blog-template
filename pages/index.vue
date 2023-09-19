@@ -28,7 +28,7 @@
      <!-- <div id="cards-container" class="grid grid-cols-1 gap-8 max-w-[950px] m-auto mt-16"> -->
      <div id="cards-container" class="grid grid-cols-3 gap-8 max-w-[950px] m-auto mt-16">
        <template v-for="(post, index) in posts" :key="post.title">
-        <div class="relative group">
+        <div v-if="index !== 0"  class="relative group">
           <div class="">
             <img class="w-full h-[300px] object-cover" :src="post.thumbnail" alt="">
           </div>
