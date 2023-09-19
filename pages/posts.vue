@@ -16,7 +16,7 @@
             </div>
           </div>
 
-          <div class="text-sm font-sans" v-html="post.html" />
+          <div id="post_content" class="text-sm font-['Newsreader']" v-html="post.html" />
 
           <hr class="mt-12" />
 

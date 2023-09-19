@@ -88,3 +88,8 @@ html, body, #__nuxt {
   font-weight: 300;
 } 
 
+
+#post_content::first-letter {
+  initial-letter: 2;
+  color: #5A5A5A;
+}

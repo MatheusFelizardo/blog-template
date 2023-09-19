@@ -12,7 +12,7 @@
           </div>
         </div>
 
-        <div class="text-sm font-sans" v-html="post.html" />
+        <div id="post_content" class="text-sm font-['Newsreader']" v-html="post.html" />
 
         <div class="flex gap-2 items-center  justify-between text-xs font-bold italic mt-20 font-['Newsreader']">
           <NuxtLink v-if="prevPost" class="p-2 text-black mb-4" :to="`/posts/${prevPost.uri}`">
