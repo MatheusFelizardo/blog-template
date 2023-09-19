@@ -1,3 +1,5 @@
+import { parse } from "postcss"
+
 const checkProperties = (block) => {
   let classes = 'block_classes'
 
@@ -98,6 +100,8 @@ export const parseHTML = (posts) => {
         html: parsedBlockHTMlString
       })
     }
+
+  
   })
 
   return parsedPosts

@@ -17,11 +17,14 @@ export default defineEventHandler(async (event) => {
 
   const dbPages = myPosts.results.map(page => page.id)
 
+
   const myPages = await Promise.all(dbPages.map(async (item) => {
     const post = await client.pages.retrieve({page_id: item})
+
     const blocks = await client.blocks.children.list({
       block_id: item
     });
+
     return {
       page_id: item,
       post,
@@ -29,5 +32,13 @@ export default defineEventHandler(async (event) => {
     }
   }))
 
-  return myPages
+  const aboutMeBlocks = await client.blocks.children.list({
+    block_id: process.env.NOTION_ABOUT_ME
+  })
+
+
+  return {
+    pages: myPages,
+    aboutMe: aboutMeBlocks.results ?? [],
+  }
 })
