@@ -1,57 +1,69 @@
-const isBold = (block) => {
-  const blockType = block.type
- 
+const isBold = (block, type) => {
   let classes = 'block_classes'
 
-  if (block[blockType].rich_text.length) {
-    if (block[blockType].rich_text[0].annotations.bold) {
-      classes += ' bold'
-    }
+  if (!block.annotations) return block.plain_text
 
-    if (block[blockType].rich_text[0].annotations.italic) {
-      classes += ' italic'
-    }
-
-    if (block[blockType].rich_text[0].annotations.strikethrough) {
-      classes += ' strikethrough'
-    }
-
-    if (block[blockType].rich_text[0].annotations.underline) {
-      classes += ' underline'
-    }
-
-    if (block[blockType].rich_text[0].annotations.code) {
-      classes += ' code'
-    }
-
-    if (block[blockType].rich_text[0].annotations.color && block[blockType].rich_text[0].annotations.color !== 'default') {
-      classes += ` ${block[blockType].rich_text[0].annotations.color}`
-    }
+  if (block.annotations.bold) {
+    classes += ' bold'
   }
 
-  return `class="${classes}"`
+  if (block.annotations.italic) {
+    classes += ' italic'
+  }
+
+  if (block.annotations.strikethrough) {
+    classes += ' strikethrough'
+  }
+
+  if (block.annotations.underline) {
+    classes += ' underline'
+  }
+
+  if (block.annotations.code) {
+    classes += ' code'
+  }
+
+  if (block.annotations.color && block.annotations.color !== 'default') {
+    classes += ` ${block.annotations.color}`
+  }
+
+  return `<span class="${classes}">${block.plain_text}</span>`
+}
+
+const renderBlock = (block) => {
+  console.log(`${block[block.type]}`,  block)
+  const parsedText = []
+
+  if (block[block.type]?.rich_text.length <= 0) return `<br />`
+
+  block[block.type].rich_text.forEach(text => {
+    if (!text.plain_text) return 
+    parsedText.push(`${isBold(text, block.type)}`)
+  })
+
+  return parsedText.length > 0 ? parsedText.join('') : ''
 }
 
 export const returnHtmlForBlockType = (block) => {
   switch (block.type) {
     case 'heading_1': 
     // For a heading
-      return `<h1 ${isBold(block)}>${ block['heading_1'].rich_text.length > 0 ? block['heading_1'].rich_text[0].plain_text : '' } </h1> `
+      return `<h1 class="block-h-one">${ renderBlock(block) }</h1> `
     case 'heading_2': 
     // For a heading
-      return `<h2 ${isBold(block)}>${ block['heading_2'].rich_text.length > 0 ? block['heading_2'].rich_text[0].plain_text : '' } </h2> `
+      return `<h2 class="block-h-two">${ renderBlock(block) }</h2> `
     case 'heading_3': 
     // For a heading
-      return `<h3 ${isBold(block)}>${ block['heading_3'].rich_text.length > 0 ?  block['heading_3'].rich_text[0].plain_text : '' } </h3>`
+      return `<h3 class="block-h-three">${ renderBlock(block) }</h3>`
     case 'image': 
     // For an image
       return `<img class="block-image" src="${ block['image'].external.url }" />`
     case 'bulleted_list_item': 
       // For an unordered list
-      return `<li ${isBold(block)}>${ block['bulleted_list_item'].rich_text.length > 0 ?  block['bulleted_list_item'].rich_text[0].plain_text :  '' }</li>`
+      return `<li class="block-list">${ renderBlock(block) }</li>`
     case 'paragraph': 
       // For a paragraph
-      return `<p ${isBold(block)}>${ block['paragraph'].rich_text.length > 0 ? block['paragraph'].rich_text[0]?.text?.content : '' }</p>`
+      return `<p class="block-paragraph">${ renderBlock(block)}</p>`
     default: 
     // For an extra type
       return `<br/>`

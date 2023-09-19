@@ -69,3 +69,22 @@ html, body, #__nuxt {
 .block_classes.pink {
   color: rgba(193, 76, 138, 1);
 }
+
+.block-h-one {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 300;
+}
+
+.block-h-two {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 300;
+}
+
+.block-h-three {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 300;
+} 
+

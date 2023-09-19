@@ -14,13 +14,19 @@
 
         <div class="text-sm font-sans" v-html="post.html" />
 
-        <div class="flex gap-2 items-center justify-around text-xs font-bold italic mt-20 font-['Newsreader']">
+        <div class="flex gap-2 items-center  justify-between text-xs font-bold italic mt-20 font-['Newsreader']">
           <NuxtLink v-if="prevPost" class="p-2 text-black mb-4" :to="`/posts/${prevPost.uri}`">
             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="currentColor" d="M27.3 34.7L17.6 25l9.7-9.7l1.4 1.4l-8.3 8.3l8.3 8.3z"/></svg>
           </NuxtLink>
+          <div class="p-2 text-black mb-4" v-else>
+            
+          </div>
           <NuxtLink v-if="nextPost" class="p-2 text-black mb-4" :to="`/posts/${nextPost.uri}`">
             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="currentColor" d="m22.7 34.7l-1.4-1.4l8.3-8.3l-8.3-8.3l1.4-1.4l9.7 9.7z"/></svg>
           </NuxtLink>
+          <div class="p-2 text-black mb-4" v-else>
+            
+          </div>
         </div>
     </div>
   </div>
