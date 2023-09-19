@@ -17,9 +17,6 @@ export default defineEventHandler(async (event) => {
 
   const dbPages = myPosts.results.map(page => page.id)
 
-  console.log(dbPages)
-  console.log('myPosts', myPosts)
-
   const myPages = await Promise.all(dbPages.map(async (item) => {
     const post = await client.pages.retrieve({page_id: item})
     const blocks = await client.blocks.children.list({

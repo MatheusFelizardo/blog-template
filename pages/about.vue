@@ -11,11 +11,6 @@
 </template>
 
 <script setup>
-  import LoginSkeleton from '@/components/skeletons/LoginSkeleton.vue'
-  import LoginImage from '@/components/svgs/LoginImg.vue'
-  import gsap from 'gsap'
-  const runtimeConfig = useRuntimeConfig()
-
   
 
 </script>

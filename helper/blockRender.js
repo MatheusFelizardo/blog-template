@@ -1,4 +1,4 @@
-const isBold = (block, type) => {
+const checkProperties = (block) => {
   let classes = 'block_classes'
 
   if (!block.annotations) return block.plain_text
@@ -31,14 +31,13 @@ const isBold = (block, type) => {
 }
 
 const renderBlock = (block) => {
-  console.log(`${block[block.type]}`,  block)
   const parsedText = []
 
   if (block[block.type]?.rich_text.length <= 0) return `<br />`
 
   block[block.type].rich_text.forEach(text => {
     if (!text.plain_text) return 
-    parsedText.push(`${isBold(text, block.type)}`)
+    parsedText.push(`${checkProperties(text)}`)
   })
 
   return parsedText.length > 0 ? parsedText.join('') : ''
@@ -84,7 +83,6 @@ export const parseHTML = (posts) => {
       // minute: 'numeric'
     })
 
-    console.log(created_at)
     if (blocks.length > 0) {
       const parsedBlockHTMl = blocks.map(block => returnHtmlForBlockType(block))
       const parsedBlockHTMlString = parsedBlockHTMl.join('')
