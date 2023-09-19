@@ -72,7 +72,7 @@ export const returnHtmlForBlockType = (block) => {
 export const parseHTML = (posts) => {
   const parsedPosts = []
 
-  posts?.forEach(postPage => {
+  posts?.forEach((postPage, index) => {
     const { blocks, page_id, post } = postPage
 
     const created_at = new Date(post.created_time).toLocaleDateString('en-Us', {
@@ -89,10 +89,10 @@ export const parseHTML = (posts) => {
 
       parsedPosts.push({
         page_id,
-        uri: post.properties["URI"].rich_text[0]?.text.content,
+        uri: post.properties["URI"].rich_text[0]?.text.content || `custom-post-${index}`,
         created_at,
         author: post.properties["Author"]?.rich_text[0]?.text.content || 'Josceline Dadá',
-        thumbnail: post.properties['Thumbnail'].files[0]?.file.url || '',
+        thumbnail: post.properties['Thumbnail'].files[0]?.file.url || '/images/default-thumbnail.png',
         title: post.properties["Name"].title[0]?.text.content,
         description: post.properties["Description"].rich_text[0]?.text.content,
         html: parsedBlockHTMlString
