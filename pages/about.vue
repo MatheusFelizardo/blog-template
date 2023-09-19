@@ -10,8 +10,5 @@
 <script setup>
   import { storeToRefs } from 'pinia';
   const { $postStore } = useNuxtApp()
-  const { posts, aboutMe } = storeToRefs($postStore)
-
-  console.log(aboutMe.value)
-
+  const { aboutMe } = storeToRefs($postStore)
 </script>
