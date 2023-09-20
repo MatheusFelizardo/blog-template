@@ -89,14 +89,14 @@ export const parseHTML = (posts) => {
     if (blocks.length > 0) {
       const parsedBlockHTMl = blocks.map(block => returnHtmlForBlockType(block))
       const parsedBlockHTMlString = parsedBlockHTMl.join('')
-
+      console.log(post.properties["Name"])
       parsedPosts.push({
         page_id,
         uri: post.properties["URI"].rich_text[0]?.text.content || `custom-post-${index}`,
         created_at,
         author: post.properties["Author"]?.rich_text[0]?.text.content || 'Josceline Dadá',
         thumbnail: post.properties['Thumbnail'].files[0]?.file?.url || '/images/default-thumbnail.png',
-        title: post.properties["Name"].title[0]?.text.content,
+        title: getTitle(post.properties["Name"].title),
         description: post.properties["Description"].rich_text[0]?.text.content || '',
         html: parsedBlockHTMlString
       })
@@ -106,4 +106,16 @@ export const parseHTML = (posts) => {
   })
 
   return parsedPosts
+}
+
+const getTitle = (title) => {
+
+  if (title.length <= 0) return ' '
+
+  const textParts = []
+  title.forEach(text => {
+    textParts.push(text.plain_text)
+  })
+  
+  return textParts.join(' ')
 }
