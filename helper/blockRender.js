@@ -66,6 +66,9 @@ export const returnHtmlForBlockType = (block) => {
     case 'paragraph': 
       // For a paragraph
       return `<p class="block-paragraph">${ renderBlock(block)}</p>`
+    // for a quote
+    case 'quote':
+      return `<blockquote class="block-quote">${ renderBlock(block) }</blockquote>`
     default: 
     // For an extra type
       return `<br/>`
@@ -89,7 +92,7 @@ export const parseHTML = (posts) => {
     if (blocks.length > 0) {
       const parsedBlockHTMl = blocks.map(block => returnHtmlForBlockType(block))
       const parsedBlockHTMlString = parsedBlockHTMl.join('')
-      console.log(post.properties["Name"])
+
       parsedPosts.push({
         page_id,
         uri: post.properties["URI"].rich_text[0]?.text.content || `custom-post-${index}`,

@@ -93,3 +93,24 @@ html, body, #__nuxt {
   initial-letter: 2;
   color: #5A5A5A;
 }
+
+
+blockquote{
+  padding: 2em 30px 1em 35px;
+  border-left: 3px solid #EDEDED ;
+  position: relative;
+}
+
+blockquote::before{
+  font-family:Arial;
+  content: "\201C";
+  color:#EDEDED;
+  font-size: 3rem;
+  position: absolute;
+  left: 10px;
+  top: 20px;
+}
+
+blockquote::after{
+  content: '';
+}
