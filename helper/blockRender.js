@@ -58,7 +58,8 @@ export const returnHtmlForBlockType = (block) => {
       return `<h3 class="block-h-three">${ renderBlock(block) }</h3>`
     case 'image': 
     // For an image
-      return `<img class="block-image" src="${ block['image'].external.url }" />`
+      const imageSrc = block['image'].external?.url || block['image'].file?.url
+      return `<img class="block-image" src="${ imageSrc }" />`
     case 'bulleted_list_item': 
       // For an unordered list
       return `<li class="block-list">${ renderBlock(block) }</li>`
@@ -94,7 +95,7 @@ export const parseHTML = (posts) => {
         uri: post.properties["URI"].rich_text[0]?.text.content || `custom-post-${index}`,
         created_at,
         author: post.properties["Author"]?.rich_text[0]?.text.content || 'Josceline Dadá',
-        thumbnail: post.properties['Thumbnail'].files[0]?.file.url || '/images/default-thumbnail.png',
+        thumbnail: post.properties['Thumbnail'].files[0]?.file?.url || '/images/default-thumbnail.png',
         title: post.properties["Name"].title[0]?.text.content,
         description: post.properties["Description"].rich_text[0]?.text.content || '',
         html: parsedBlockHTMlString
