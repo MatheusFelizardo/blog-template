@@ -59,7 +59,7 @@ export const returnHtmlForBlockType = (block) => {
     case 'image': 
     // For an image
       const imageSrc = block['image'].external?.url || block['image'].file?.url
-      return `<img class="block-image" src="${ imageSrc }" />`
+      return `${imageSrc ? `<img class="block-image" src="${ imageSrc }" />` : '<br />' }`
     case 'bulleted_list_item': 
       // For an unordered list
       return `<li class="block-list">${ renderBlock(block) }</li>`
