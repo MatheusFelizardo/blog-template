@@ -89,9 +89,10 @@ html, body, #__nuxt {
 } 
 
 
-#post_content::first-letter {
-  initial-letter: 2;
-  color: #5A5A5A;
+.block-paragraph:has(.equation)::first-letter {
+  float: left;
+  padding: 12px 2px 0 0px;
+  font-size: 42px;
 }
 
 
