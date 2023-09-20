@@ -29,6 +29,7 @@ const checkProperties = (block) => {
     classes += ' equation'
   }
 
+
   if (block.annotations.color && block.annotations.color !== 'default') {
     classes += ` ${block.annotations.color}`
   }

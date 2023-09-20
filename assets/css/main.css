@@ -54,9 +54,13 @@ html, body, #__nuxt {
 }
 
 .block_classes.green {
-  color: rgba(68, 131, 97, 1);
+  color: rgb(18, 70, 42);
 }
 
+.block_classes.green_background {
+  background-color: rgb(18, 70, 42);
+  color: white;
+}
 
 .block_classes.blue {
   color: rgba(51, 126, 169, 1);
@@ -91,8 +95,11 @@ html, body, #__nuxt {
 
 .block-paragraph:has(.equation)::first-letter {
   float: left;
-  padding: 12px 2px 0 0px;
-  font-size: 42px;
+  padding: 0px 2px 0 0px;
+  display: inline-block;
+  font-size: 48px;
+  line-height: 1;
+  margin-top: 0;
 }
 
 
