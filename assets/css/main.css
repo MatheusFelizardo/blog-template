@@ -57,9 +57,14 @@ html, body, #__nuxt {
   color: rgb(18, 70, 42);
 }
 
+
 .block_classes.green_background {
   background-color: rgb(18, 70, 42);
   color: white;
+}
+
+.block-link {
+  text-decoration: underline;
 }
 
 .block_classes.blue {
