@@ -34,7 +34,8 @@ const checkProperties = (block) => {
     classes += ` ${block.annotations.color}`
   }
 
-  return `<span class="${classes}">${block.plain_text}</span>`
+  const href = block.href
+  return href ? `<span class="${classes}"><a class="block-link" href="${href}" target="_blank">${ block.plain_text }</a></span>` :  `<span class="${classes}">${ block.plain_text }</span>`
 }
 
 const renderBlock = (block) => {
