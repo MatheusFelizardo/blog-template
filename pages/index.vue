@@ -4,8 +4,8 @@
       <img class="min-h-[166px]" src="~/assets/images/logo-preta.png" alt="Josceline Dadá">
       
    </div> -->
-   <div v-if="!$route.params.slug" class="pt-40 py-5 max-w-5xl m-auto">
-      <div class="mb-4  max-w-[65%] m-auto relative flex flex-col justify-center  text-black ">
+   <div v-if="!$route.params.slug" class="pt-10 sm:pt-40 py-5 max-w-5xl m-auto">
+      <div class="mb-4 max-w-[90%] sm:max-w-[65%] m-auto relative flex flex-col justify-center  text-black ">
         <div class="flex flex-col mb-1">
           <h1 class="text-4xl font-light font-['Newsreader'] mb-4">
           {{ posts[0].title }}
@@ -26,7 +26,7 @@
       </div> -->
       
      <!-- <div id="cards-container" class="grid grid-cols-1 gap-8 max-w-[950px] m-auto mt-16"> -->
-     <div id="cards-container" class="grid grid-cols-3 gap-8 max-w-[950px] m-auto mt-16">
+     <div id="cards-container" class="grid grid-cols-1 gap-8 max-w-[950px] m-auto mt-10 sm:mt-16 sm:grid-cols-2 md:grid-cols-3">
        <template v-for="(post, index) in posts" :key="post.title">
         <div v-if="index !== 0"  class="relative group">
           <div class="">
@@ -34,7 +34,7 @@
           </div>
 
           <NuxtLink :to="`/posts/${post.uri}`" class="opacity-0 transition-opacity description w-full h-full absolute justify-center items-center flex top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-black bg-opacity-50 group-hover:opacity-100">
-            <span class="text-md font-extralight w-[65%] text-center text-white font-['Newsreader']">{{ post.title }}</span>
+            <span class="text-md font-extralight w-[90%] sm:w-[65%] text-center text-white font-['Newsreader']">{{ post.title }}</span>
           </NuxtLink>
         </div>
          <!-- <div 

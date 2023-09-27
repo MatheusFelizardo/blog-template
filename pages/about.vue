@@ -1,7 +1,7 @@
 <template>
    
-    <div class=" mt-[100px] max-w-5xl m-auto font-['Newsreader']">
-      <div class="max-w-[65%] m-auto flex flex-col gap-4">
+    <div class="mt-10 sm:mt-[100px] max-w-5xl m-auto font-['Newsreader']">
+      <div class="max-w-[90%] sm:max-w-[65%] m-auto flex flex-col gap-4">
         <div v-html="aboutMe"></div>
       </div>
     </div>

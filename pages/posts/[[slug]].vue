@@ -1,7 +1,7 @@
 <template>
 
-  <div class="max-w-5xl m-auto pt-40">
-    <div :id="post.title" class="post w-[65%] m-auto  text-black">
+  <div class="max-w-5xl m-auto pt-10 sm:pt-40">
+    <div :id="post.title" class="post w-[90%] sm:w-[65%] m-auto  text-black">
       <div class="flex flex-col mb-8">
         <h1 class="text-4xl font-light font-['Newsreader'] mb-4">
           {{ post.title }}
