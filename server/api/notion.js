@@ -11,8 +11,9 @@ export default defineEventHandler(async (event) => {
   //   return JSON.parse(cachedData)
   // }
 
-  const response = await fetch('/data.json')
+  const response = await fetch('https://thisisus.vercel.app/data.json')
   const json = await response?.json()
+
   if(json) {
     return json;
   }
