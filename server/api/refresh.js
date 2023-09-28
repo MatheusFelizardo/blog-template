@@ -1,11 +1,7 @@
 import { Client } from '@notionhq/client'
 import fs from 'fs'
-import path from 'path';
 
 export default defineEventHandler(async (event) => {
-  const jsonPath = path.join(process.cwd(), '/public/data.json')
-
-
   try {
     // Initializing a client
     const client = new Client({
@@ -44,27 +40,24 @@ export default defineEventHandler(async (event) => {
 
     if (myPages.length <= 0) throw new Error('Update failed! No posts found!')
     if (aboutMeBlocks.results.length <= 0) throw new Error('Update failed! No about me found!')
-
-    console.log(jsonPath)
-    const cachedDataExists = fs.existsSync(jsonPath)
+    
+    const cachedDataExists = fs.existsSync('./public/data.json')
     if(cachedDataExists) {
-      fs.unlinkSync(jsonPath)
+      fs.unlinkSync('./public/data.json')
     }
 
-    fs.writeFileSync(jsonPath, JSON.stringify(data))
+    fs.writeFileSync('./public/data.json', JSON.stringify(data))
 
     console.log('Refreshing notion api data...')
 
     return {
       newData: data,
-      jsonPath,
       message: 'Data refreshed successfully!'
     }
   } catch (e) {
     return {
       newData: [],
       error: e,
-      jsonPath,
       message: 'Error refreshing data, try again later.'
     }
   }
