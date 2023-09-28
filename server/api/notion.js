@@ -1,5 +1,5 @@
 import { Client } from '@notionhq/client'
-import fs from 'fs'
+// import fs from 'fs'
 
 export default defineEventHandler(async (event) => {
   // const cachedDataExists = fs.existsSync('./public/data.json')
@@ -11,12 +11,12 @@ export default defineEventHandler(async (event) => {
   //   return JSON.parse(cachedData)
   // }
 
-  const response = await fetch('https://thisisus.vercel.app/data.json')
-  const json = await response?.json()
+  // const response = await fetch('https://thisisus.vercel.app//data.json')
+  // const json = await response?.json()
 
-  if(json) {
-    return json;
-  }
+  // if(json) {
+  //   return json;
+  // }
 
   const runtimeConfig = useRuntimeConfig()
 
@@ -54,13 +54,12 @@ export default defineEventHandler(async (event) => {
   })
 
 
-
   const data = {
     pages: myPages ?? [],
     aboutMe: aboutMeBlocks.results ?? [],
   }
   
-  fs.writeFileSync('./public/data.json', JSON.stringify(data))
+  // fs.writeFileSync('./public/data.json', JSON.stringify(data))
 
   console.log('Returning notion api data...')
 
