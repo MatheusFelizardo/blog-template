@@ -1,10 +1,9 @@
 <template>
 
-   <!-- <div class="my-12 flex justify-center items-center flex-col">
-      <img class="min-h-[166px]" src="~/assets/images/logo-preta.png" alt="Josceline Dadá">
-      
-   </div> -->
-   <div v-if="!$route.params.slug" class="pt-10 sm:pt-40 py-5 max-w-5xl m-auto">
+   <div class="pt-20 flex justify-center items-center flex-col">
+      <img class="max-h-[166px]" src="~/assets/images/logo-preta.png" alt="Josceline Dadá">
+   </div>
+   <div v-if="!$route.params.slug" class="pt-20 sm:pt-40 py-5 max-w-5xl m-auto">
       <div class="mb-4 max-w-[90%] sm:max-w-[65%] m-auto relative flex flex-col justify-center  text-black ">
         <div class="flex flex-col mb-1">
           <h1 class="text-4xl font-light font-['Newsreader'] mb-4">
