@@ -6,6 +6,11 @@
 
 <script setup>
   const { $postStore } = useNuxtApp()
-  await $postStore.getPosts()
+  const route = useRoute()
+  const currentUrl = route.path
+  
+  if (currentUrl !== '/refresh') {
+    await $postStore.getPosts()
+  }
   
 </script>

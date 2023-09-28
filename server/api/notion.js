@@ -1,6 +1,16 @@
 import { Client } from '@notionhq/client'
+import fs from 'fs'
 
 export default defineEventHandler(async (event) => {
+  const cachedDataExists = fs.existsSync('./public/data.json')
+
+  if (cachedDataExists) {
+    const cachedData = fs.readFileSync('./public/data.json')
+    
+    console.log('Returning cached data...')
+    return JSON.parse(cachedData)
+  }
+
   const runtimeConfig = useRuntimeConfig()
 
   // Initializing a client
@@ -37,8 +47,15 @@ export default defineEventHandler(async (event) => {
   })
 
 
-  return {
-    pages: myPages,
+
+  const data = {
+    pages: myPages ?? [],
     aboutMe: aboutMeBlocks.results ?? [],
   }
+  
+  fs.writeFileSync('./public/data.json', JSON.stringify(data))
+
+  console.log('Returning notion api data...')
+
+  return data
 })

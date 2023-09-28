@@ -17,7 +17,6 @@ export const usePostStore = defineStore('post', {
       const { data } = await useFetch('/api/notion')
       const posts = parseHTML(data.value.pages)
 
-      console.log(data.value.aboutMe)
       const aboutMeParsedHTMl = data.value.aboutMe.map(block => returnHtmlForBlockType(block))
       const aboutMeParsedHTMlString = aboutMeParsedHTMl.join('')
 
