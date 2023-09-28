@@ -1,11 +1,15 @@
 import { Client } from '@notionhq/client'
 import fs from 'fs'
+import path from 'path';
 
 export default defineEventHandler(async (event) => {
-  const cachedDataExists = fs.existsSync('./public/data.json')
+  const jsonPath = path.join(process.cwd(), '/public/data.json')
+
+
+  const cachedDataExists = fs.existsSync(jsonPath)
 
   if (cachedDataExists) {
-    const cachedData = fs.readFileSync('./public/data.json')
+    const cachedData = fs.readFileSync(jsonPath)
     
     console.log('Returning cached data...')
     return JSON.parse(cachedData)
@@ -52,8 +56,8 @@ export default defineEventHandler(async (event) => {
     pages: myPages ?? [],
     aboutMe: aboutMeBlocks.results ?? [],
   }
-  
-  fs.writeFileSync('./public/data.json', JSON.stringify(data))
+
+  fs.writeFileSync(jsonPath, JSON.stringify(data))
 
   console.log('Returning notion api data...')
 
