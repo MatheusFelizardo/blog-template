@@ -2,13 +2,19 @@ import { Client } from '@notionhq/client'
 import fs from 'fs'
 
 export default defineEventHandler(async (event) => {
-  const cachedDataExists = fs.existsSync('./public/data.json')
+  // const cachedDataExists = fs.existsSync('./public/data.json')
 
-  if (cachedDataExists) {
-    const cachedData = fs.readFileSync('./public/data.json')
+  // if (cachedDataExists) {
+  //   const cachedData = fs.readFileSync('./public/data.json')
     
-    console.log('Returning cached data...')
-    return JSON.parse(cachedData)
+  //   console.log('Returning cached data...')
+  //   return JSON.parse(cachedData)
+  // }
+
+  const response = await fetch('/data.json')
+  const json = await response?.json()
+  if(json) {
+    return json;
   }
 
   const runtimeConfig = useRuntimeConfig()
